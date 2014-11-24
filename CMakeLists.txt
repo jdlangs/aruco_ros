@@ -7,7 +7,6 @@ find_package(catkin REQUIRED COMPONENTS
   dynamic_reconfigure
   geometry_msgs
   image_transport
-  pal_vision_segmentation
   roscpp
   rospy
   tf
@@ -60,11 +59,6 @@ add_executable(single src/simple_single.cpp
                       src/aruco_ros_utils.cpp)
 add_dependencies(single ${PROJECT_NAME}_gencfg)
 target_link_libraries(single aruco ${catkin_LIBRARIES})
-
-add_executable(double src/simple_double.cpp
-                      src/aruco_ros_utils.cpp)
-add_dependencies(double ${PROJECT_NAME}_gencfg)
-target_link_libraries(double aruco ${catkin_LIBRARIES})
 
 add_executable(marker_pub src/marker_publish.cpp
                       src/aruco_ros_utils.cpp)
