@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
 set(CMAKE_CXX_EXTENSIONS ON) #...with compiler extensions like gnu++11
 
 catkin_package(
+  DEPENDS OpenCV
   INCLUDE_DIRS include
   LIBRARIES aruco
 )
