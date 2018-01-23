@@ -4,6 +4,8 @@
 #include <iostream>
 #include <tf/transform_datatypes.h>
 
+#include <opencv2/calib3d.hpp>
+
 aruco::CameraParameters aruco_ros::rosCameraInfo2ArucoCamParams(const sensor_msgs::CameraInfo& cam_info,
                                                                 bool useRectifiedParameters)
 {

@@ -59,7 +59,7 @@ private:
   tf::StampedTransform rightToLeft;
   bool useRectifiedImages;
   MarkerDetector mDetector;
-  vector<Marker> markers;
+  std::vector<Marker> markers;
   ros::Subscriber cam_info_sub;
   bool cam_info_received;
   image_transport::Publisher image_pub;

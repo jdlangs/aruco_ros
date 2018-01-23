@@ -6,6 +6,7 @@ find_package(catkin)
 find_package(OpenCV REQUIRED)
 
 catkin_package(
+  DEPENDS OpenCV
   INCLUDE_DIRS include
   LIBRARIES aruco
 )
