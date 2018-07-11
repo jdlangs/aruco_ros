@@ -16,4 +16,4 @@ matrix:
 install:
   - git clone https://github.com/ros-industrial/industrial_ci .industrial_ci
 script:
-  - .industrial_ci/travis.yml
+  - .industrial_ci/travis.sh
