@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(aruco_ros)
-add_definitions(-std=c++11)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 find_package(OpenCV REQUIRED)
 
@@ -17,25 +18,13 @@ find_package(catkin REQUIRED COMPONENTS
   visualization_msgs
 )
 
-set(aruco_DIR $ENV{HOME}/Tools/libaruco
-    CACHE PATH "Location of Aruco library"
-)
-
 find_package(OpenCV REQUIRED)
-
-find_library(aruco_LIB aruco PATHS ${aruco_DIR}/lib)
-if(${aruco_LIB} EQUAL "aruco_LIB-NOTFOUND")
-    message(WARNING "Aruco library not found at: " ${aruco_DIR})
-else()
-    message(STATUS "Aruco library at: " ${aruco_LIB})
-endif()
-set(aruco_INCLUDE_DIRS ${aruco_DIR}/include)
+find_package(aruco 3 REQUIRED)
+message(WARNING "Aruco library found, version: " ${aruco_VERSION})
 
 generate_dynamic_reconfigure_options(
   cfg/ArucoThreshold.cfg
 )
-
-add_compile_options(-std=c++11)
 
 catkin_package(
   INCLUDE_DIRS include
@@ -65,7 +54,7 @@ include_directories(
 add_executable(marker_publisher src/marker_publish.cpp
                                 src/aruco_ros_utils.cpp)
 add_dependencies(marker_publisher ${PROJECT_NAME}_gencfg)
-target_link_libraries(marker_publisher ${OpenCV_LIBRARIES} ${aruco_LIB} ${catkin_LIBRARIES})
+target_link_libraries(marker_publisher ${OpenCV_LIBRARIES} ${aruco_LIBS} ${catkin_LIBRARIES})
 
 #############
 ## Install ##
